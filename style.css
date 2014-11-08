@@ -1184,13 +1184,10 @@ img#wpstats {
 	-ms-transform: rotate(180deg);
 	-o-transform: rotate(180deg);
 	-o-transition: all 0.5s ease-out;
-	-webkit-transform: rotate(180deg);
-	-webkit-transition: all 0.5s ease-out;
 	background-image: url('images/arrow.svg');
 	background-size: auto 37px;
 	bottom: 10px;
 	cursor: ponter;
-	display: none;
 	height: 37px;
 	opacity: .3;
 	position: fixed;
@@ -1419,7 +1416,7 @@ img#wpstats {
 	}
 	
 	.social a {
-		font-size: 1.9rem;
+		font-size: 2rem;
 		width: 2rem;
 		
 	}
