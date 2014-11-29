@@ -19,11 +19,12 @@ function google_verification(){
 	echo "<meta name='google-site-verification' content='EeDUH9QOXfKg8_Q1-zbKfNxec51dPOOFWbwbcBlKlE8' />"."\n";
 }
 
-/*Добавляем шрифт Roboto Slab в хедер сайта*/
+/*Добавляем шрифт Roboto Slab в хедер сайта
 add_action('wp_head', 'add_roboto_slab', 15);
 	function add_roboto_slab(){
 		echo"<link href='http://fonts.googleapis.com/css?family=Roboto+Slab&subset=latin,cyrillic' rel='stylesheet' type='text/css'>" . "\n";
 }
+*/
 
 /*--------------------------- FOOTER ------------------------------------*/
 
@@ -34,10 +35,28 @@ function call_jquery(){
 }
 
 /*Добавляем вызов функции scrollup в футер*/
-function scrolltotop(){
-	echo '<script type="text/javascript" src="'. get_stylesheet_directory_uri() .'/js/scrollup.js"></script>' ."\n";
-}
+
+add_action('wp_footer', 'scrollup');
+
+function scrollup() { ?>
 add_action('wp_footer','scrolltotop');
+<script>
+$(document).ready(function(){ 
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 100) {
+			$('.scrollup').fadeIn();
+			} else {
+			$('.scrollup').fadeOut();
+            }
+	}); 
+
+	$('.scrollup').click(function(){
+	$("html, body").animate({ scrollTop: 0 }, 300);// 300 — это скорость прокрутки в милисекундах
+		return false;
+	});
+});
+</script>
+<?php }
 
 /*Добавляем Google Analytics в футер*/
 add_action('wp_footer', 'add_googleanalytics');
@@ -54,55 +73,9 @@ function add_googleanalytics() { ?>
 </script>
 <?php }
 
-/*Попап для социальных кнопок
-function social_popup() { ?>
-<script>
-(function() {
-    // связываем селектор и размер окна
-    var Config = {
-        Link: "a.share",
-        Width: 500,
-        Height: 500
-    };
- 
-    // добавляемы ссылки
-    var slink = document.querySelectorAll(Config.Link);
-    for (var a = 0; a < slink.length; a++) {
-        slink[a].onclick = PopupHandler;
-    }
- 
-    // попап
-    function PopupHandler(e) {
- 
-        e = (e ? e : window.event);
-        var t = (e.target ? e.target : e.srcElement);
- 
-        // расположение попапа
-        var
-            px = Math.floor(((screen.availWidth || 1024) - Config.Width) / 2),
-            py = Math.floor(((screen.availHeight || 700) - Config.Height) / 2);
- 
-        // открываем попап
-        var popup = window.open(t.href, "social", 
-            "width="+Config.Width+",height="+Config.Height+
-            ",left="+px+",top="+py+
-            ",location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1");
-        if (popup) {
-            popup.focus();
-            if (e.preventDefault) e.preventDefault();
-            e.returnValue = false;
-        }
- 
-        return !!popup;
-    }
- 
-}());
-</script>
-<?php }
-
-add_action('wp_footer' , 'social_popup');*/
 
 /*--------------------------- ВИДЖЕТЫ -------------------------------------*/
+
 
 /*Регистрируем новый сайдбар в футере*/
 if (function_exists('register_sidebar')) {
