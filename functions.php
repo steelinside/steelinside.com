@@ -54,7 +54,7 @@ function add_googleanalytics() { ?>
 </script>
 <?php }
 
-/*Попап для социальных кнопок*/
+/*Попап для социальных кнопок
 function social_popup() { ?>
 <script>
 (function() {
@@ -100,7 +100,7 @@ function social_popup() { ?>
 </script>
 <?php }
 
-add_action('wp_footer' , 'social_popup');
+add_action('wp_footer' , 'social_popup');*/
 
 /*--------------------------- ВИДЖЕТЫ -------------------------------------*/
 
@@ -177,10 +177,10 @@ function social_buttons(){ ?>
 	<h4>Поделиться с друзьями:</h4>
 	<div class="social">
 		<!--VK-->
-		<a class = "vk share" href = "https://vk.com/share.php?url=<?php the_permalink();?>&title=<?php the_title(); ?>&" title="ВКонтакте"><span class = "icon-vk"></span>&nbsp;<span class = "social-name">ВКонтакте</span></a>
+		<a class = "vk share" href = "https://vk.com/share.php?url=<?php the_permalink();?>&title=<?php the_title(); ?>&" title="ВКонтакте" target = "_blank"><span class = "icon-vk"></span>&nbsp;<span class = "social-name">ВКонтакте</span></a>
 		<!--Facebook-->
-		<a class="facebook share" href="http://www.facebook.com/sharer.php?u=<?php the_permalink();?>&amp;t=<?php the_title(); ?>" title="Поделиться на Фейсбуке"><span class = "icon-facebook"></span>&nbsp;<span class = "social-name">Facebook</span></a>	<!--Twitter-->
-		<a class="twitter share" href="http://twitter.com/home?status=Читаю: <?php the_permalink(); ?>" title="Затвитить!"><span class = "icon-twitter"></span>&nbsp;<span class = "social-name">Twitter</span></a>
+		<a class="facebook share" href="http://www.facebook.com/sharer.php?u=<?php the_permalink();?>&amp;t=<?php the_title(); ?>" title="Поделиться на Фейсбуке" target = "_blank"><span class = "icon-facebook"></span>&nbsp;<span class = "social-name">Facebook</span></a>	<!--Twitter-->
+		<a class="twitter share" href="http://twitter.com/home?status=Читаю: <?php the_permalink(); ?>" title="Затвитить!" target = "_blank"><span class = "icon-twitter"></span>&nbsp;<span class = "social-name">Twitter</span></a>
 	</div><?php;
 }
 
